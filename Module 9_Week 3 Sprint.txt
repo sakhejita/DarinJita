@@ -1,0 +1,16 @@
+package displaysrows;
+import java.util.Scanner;
+public class DisplaysRows {
+    public static void main(String[] args) {
+        // Displaying Rows
+        Scanner input = new Scanner(System.in);
+        System.out.println("How many rows: ");
+        int rows = input.nextInt();
+        for (int a = 1; a < 10; a++) {
+            for (int i = 1; i < a; i++) {
+                System.out.println("1");   
+            }
+            System.out.println("");
+        }
+    }   
+}
