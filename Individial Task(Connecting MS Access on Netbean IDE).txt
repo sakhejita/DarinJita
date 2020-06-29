@@ -1,0 +1,71 @@
+package msaccessdatabaseconnectionexception;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class MsAccessDatabaseConnectionException {
+
+    public static void main(String[] args) {
+   // Variables 
+   Connection connection = null;
+   Statement statement = null;
+   ResultSet resultSet = null;
+   //Step1: Loading or registering Oracle JDBC driver class
+        try {
+            class.forName("Sun.jdbcOdbcDriver");
+        } catch (ClassNotFoundException cnfex) {
+            System.out.println("Problem in loading"
+                         + "MS Access JDBS driver");
+            cnfex.printStackTrace();
+        }
+     //Step2: Opening database connection
+        try {
+           String msAccessDBName = "C:\\Users\\keto\\Documents\\try\\MsAccessDatabaseConnectionException";
+           String dbURL = "jdbc:odbc:Driver="
+                    + "{Microsoft Access Driver(*.mdb,*.accdb)};"
+                   + "DBQ = "
+                   + msAccessDBName
+                   + "DriverID = 22; READONLY = true"
+        // Step2.A : Create and 
+        //get connection using driver manager class                  
+           connection = DriverManager.getConnection(dbURL);
+           //Step 2.B: Creating JDBC statement
+           statement = connection.createStatement();
+           //retreve data into ResultSet
+           resultSet = statement.executeQuery("SELECT * FROM PlayerTable");
+            System.out.println("ID\tNmae\t\t\tAge\tMatches");
+            System.out.println("t==\t==========\t===\t========");        
+            //processing returned data and printing into console
+            while (resultSet.next()) {                
+                System.out.println(resultSet.getString(1) + "\t" +
+                        resultSet.getString(2) + "\t" +
+                        resultSet.getString(3) + "\t" +
+                        resultSet.getString(4));
+            }
+                  } catch (SQLException sqlex) {
+                    sqlex.printStackTrace();
+        }
+         finally{
+            //step3: cloasing database connectio
+            try{
+                if(null! = connection){
+                //CleanUp resources , once after processing
+                resultSet.close();;
+                statement.close();
+                // and then finally clsoe connection
+                connection.close();;
+            
+                           }
+            }
+            catch(SQLException sqlex){
+            sqlex.printStackTrace();
+            }
+                
+        }
+     
+    }
+    
+    
+}
