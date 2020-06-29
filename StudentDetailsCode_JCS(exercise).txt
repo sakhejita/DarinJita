@@ -1,0 +1,24 @@
+package studentdetails;
+import java.util.Scanner;
+public class StudentDetails {
+    public static void main(String[] args) {
+        String sNames,sSurname, sGender,sDOB;
+        int sGrade;
+        Scanner input = new Scanner(System.in);    
+        System.out.println("Enter Student Name" );
+        sNames = input.nextLine();
+        System.out.println("Enter Student Surname");
+        sSurname = input.nextLine();
+        System.out.println("Enter Date of Birth");
+        sDOB = input.nextLine();
+        System.out.println("Enter Gender");
+        sGender = input.nextLine();
+        System.out.println("Enter Grade");
+        sGrade = input.nextInt();      
+        System.out.println("Student Name: " + sNames);
+        System.out.println("Student Surname: " + sSurname);
+        System.out.println("Date of birth: " + sDOB);
+        System.out.println("Gender: " + sGender);
+        System.out.println("Grade: " + sGrade);           
+    }   
+}
