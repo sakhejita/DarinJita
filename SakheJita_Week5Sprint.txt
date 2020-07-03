@@ -1,0 +1,30 @@
+import
+java.sql.*;
+    public class myDatabase{
+      static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+      static final String DB_URL = "jdbc:mysql:C:\\Users||Sakhe\\Documents
+      \\MyWork\\JAVA_Sprints";
+       static final String USER = "username";
+       static final String PASS = "password";
+       public static void main(String args) throws ClassNotFoundException{
+            Connection conn = null;
+            Statement stmt = null;
+           try{
+                 Class.forName("com.mysql.jdbc.Driver");
+                 System.out.println("Connecting to as selected database...");
+                 conn = 
+
+           DriverManager.getConnection("jdbc:mysql:C:\\Users||Sakhe\\Documents
+      \\MyWork\\JAVA_Sprints","username","password");
+            system.out.println("Connected database successfully...");
+            System.out.println("Inserting records into the table...");
+            stmt = conn.createStatement();
+            String sql = "INSERT INTO learners" + "VALUES
+          ('Ryo,'Manby','20May2010','female','5','Jack','Manby','0898765453','Mandalay',
+            '1')";
+                stmt.executeUpdate(sql);
+                system.out.println("Inserted records into table...");
+                 }catch(SQLException se){
+                    se.printStakeTrace();
+         }
+}    
