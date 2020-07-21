@@ -1,0 +1,38 @@
+package database;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+
+public class iRegistration extends JFrame{
+   public iRegistration();
+    {
+        // Subjects/header of the table
+    String[] columns = new String[]{
+       "Age-Groups" , "IsiXhosa" , "EnglishFAL" , "Mathematics" , "MathsLitecy" , "LifeSciences" , "CraetiveArts" , "Accepted" , "Rejected"
+            };
+  
+   //Data for the table(2D Array)
+    Objectr[][] data = new Object[][]{
+     {"6 - 9" , "15" , "19" , "28" , "23" , "14" , "19" , "34" , "0");
+     {"10 - 14" , "9" , "10" , "12" , "13" , "15" , "12" , "15" , "1");
+     {"15 - 17" , "8" , "6" , "5" , "8" , "7" , "9" , "10" , "5");   
+   };
+   //Creating table with new data
+     JTable table = new JTable(data, columns);
+   //Adding the table to the frame
+   this.add(new JScrollPane(table));
+   this.setTitle("Table Registration");
+   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   this.pack();
+   this.setVisible(true);
+ }
+
+public static void main(String[] args){
+    SwingUtilities.invokeLater(new Runnable(){
+     @Override
+     public void run(){
+        new iRegistration();
+   }
+ }); 
+} 
